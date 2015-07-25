@@ -1,15 +1,16 @@
-library(dplyr)
-
 fileURL<-"https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 
-if (!file.exists("~/wearables")) { dir.create("~/wearables") ; print("new directory created") }
-
-setwd("~/wearables/UCI HAR dataset")
+if (!file.exists("~/wearables")) { dir.create("~/wearables") ; print("new directory created: '~/wearables'") }
 
 download.file(fileURL,"~/wearables/file.zip")
 
+setwd("~/wearables/UCI HAR dataset")
+
 unzip("~/wearables/file.zip", overwrite=TRUE, exdir="~/wearables")
 
+## If you do not want to download and unzip this 60Mb file please start the code from here, but you will need to set the working directory correctly.
+
+library(dplyr)
 
   ## 1. Merges the training and the test sets to create one data set (for x and y)
 x_test<-read.table("test/X_test.txt", sep="", colClasses="numeric")
